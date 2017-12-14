@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Kite+One');
+body {
+    font-family: 'Kite One';
+}
+
+$heading-back-button-size:2.3em;
+$heading-back-button-top:9px;
+$heading-back-button-right:8px;
+div#mainContent {
+    // display: relative;
+    // margin-top: 70px;
+}
+
+h3>i.fa {
+    cursor: pointer;
+    top: $heading-back-button-top;
+    font-size: $heading-back-button-size;
+    position: relative;
+    right: $heading-back-button-right;
+}

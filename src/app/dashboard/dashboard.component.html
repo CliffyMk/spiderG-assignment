@@ -1,0 +1,78 @@
+<div class="container">
+    <h1>DashBoard</h1>
+    <div *ngFor="let news of newsList">
+
+        {{news}}
+    </div>
+    <form action="">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <input type="text" name="search" id="inputSearch" class="form-control" [(ngModel)]="userSearch" required="required" placeholder="type to search...">
+                </div>
+
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+                    <button type="button" class="btn btn-default" (click)="_showAddUserModal()">Add User</button>
+
+                </div>
+
+            </div>
+            <div class="row">
+
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users|searchPipe:userSearch;let userIndex=index;">
+                        <td>{{userIndex+1}}</td>
+                        <td>{{user.firstname}}</td>
+                        <td>{{user.lastname}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td (click)="changeUserStatus(userIndex,user.firstname+' '+user.lastname,user.status)">
+                            <input type="checkbox" id="{{'userstatus'+userIndex}}" name="{{'userstatus'+userIndex}}" [checked]="(user.status==='true')?true:''"> Active
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </form>
+</div>
+<div *ngIf="showAddUserModal">
+    <create-user (addUserEvent)="addUser($event)" (closeAddUserModal)="closeAddUserModal()"></create-user>
+</div>
+<div *ngIf="showUserStatusModal">
+    <div class="modal show" id="modal-id">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="changeUserStatus()">
+                        &times;</button>
+                    <h4 class="modal-title">Are you Sure you want to change the Status of {{changeUserStatusName}} from
+                        <span *ngIf="changeUserStatusMode=='true'">Active to Inactive?</span>
+                        <span *ngIf="changeUserStatusMode=='false'">Inactive to Active</span>
+                    </h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="changeUserStatus()">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="confirmChangeUserStatus()"> Changes Status</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,7 @@
+<div id="alertBox" *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
+    <div class="modal show">
+        <a (click)="close()" class="close" aria-label="close">&times;</a>
+        <strong *ngIf="message.type === 'success'">success</strong>
+        <strong *ngIf="message.type === 'error'">failure</strong> {{message.text}}
+    </div>
+</div>

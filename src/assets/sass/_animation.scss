@@ -1,0 +1,58 @@
+@charset "UTF-8";
+.fadeInUp {
+    animation-name: fadeInUp;
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.slideInUp {
+    animation-name: slideInUp;
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes slideInUp {
+    0% {
+        transform: translateY(100%);
+        visibility: visible;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translateY(100%);
+        visibility: visible;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+body {
+    font-family: 'segoe ui', 'Raleway', sans-serif;
+}
